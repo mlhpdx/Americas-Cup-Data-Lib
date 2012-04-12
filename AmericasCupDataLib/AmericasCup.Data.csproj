@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A956DE72-42B6-4214-A562-C84139BF4D62}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AmericasCup.Data</RootNamespace>
+    <AssemblyName>AmericasCupDataLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoatLocation.cs" />
+    <Compile Include="BoatStatus.cs" />
+    <Compile Include="BoatStatusEnum.cs" />
+    <Compile Include="ChatterSourceEnum.cs" />
+    <Compile Include="ChatterText.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="DeviceTypeEnum.cs" />
+    <Compile Include="DisplayTextMessage.cs" />
+    <Compile Include="Heartbeat.cs" />
+    <Compile Include="MarkRounding.cs" />
+    <Compile Include="MessageHeader.cs" />
+    <Compile Include="MessageFactory.cs" />
+    <Compile Include="MessageTypeEnum.cs" />
+    <Compile Include="RaceStartStatus.cs" />
+    <Compile Include="RaceStartStatusEnum.cs" />
+    <Compile Include="RaceStatus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RaceStatusEnum.cs" />
+    <Compile Include="RaceTypeEnum.cs" />
+    <Compile Include="TextMessage.cs" />
+    <Compile Include="XmlMessage.cs" />
+    <Compile Include="XmlMessageSubTypeEnum.cs" />
+    <Compile Include="YachtActionCode.cs" />
+    <Compile Include="YachtActionEnum.cs" />
+    <Compile Include="YachtEventCode.cs" />
+    <Compile Include="YachtEventEnum.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
