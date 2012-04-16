@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using AmericasCup.Feed;
 using System.Threading;
-using System.Diagnostics;
-using AmericasCup.Data;
 
 namespace TestAC
 {
@@ -13,7 +8,7 @@ namespace TestAC
     {
         static void Main(string[] args)
         {
-            var c = new Client();
+            var c = new Client(ServerSource.Test);
             var e = new FeedEvents();
 //            e.OnHeartbeat += h => Console.WriteLine(string.Format("Heartbeat {0}", h.SequenceNum));
 //            e.OnRaceStatus += rs => Console.WriteLine(string.Format("{0} race {1} is {2} with {3} boats.", rs.RaceType, rs.RaceId, rs.Status, rs.NumberOfBoatsInRace));
@@ -27,7 +22,7 @@ namespace TestAC
             e.OnYachtEventCode += ye => Console.WriteLine(string.Format("Boat {0} event {1}", ye.DestinationBoatId, ye.Event));
             e.OnYachtActionCode += ya => Console.WriteLine(string.Format("Boat {0} action {1}", ya.OriginatorBoatId, ya.Event));
             e.OnXmlMessage += xm => Console.WriteLine(string.Format("XML {0} message:\n {1}", xm.SubType, xm.Text));
-            e.OnUnsupportedMessage += um => Console.WriteLine(string.Format("Unsupported message {0} ({1} bytes)", um.Header.Type, um.Header.MessageLength));
+            e.OnUnsupportedMessage += um => Console.WriteLine(string.Format("Unsupported message {0} ({1} bytes) at {2}", um.Header.Type, um.Header.MessageLength, um.Header.TimeStamp));
 
             c.OnMessage += e.MessageHandler;
             c.Connect();

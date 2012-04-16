@@ -7,6 +7,12 @@ namespace AmericasCup.Data
 {
     public class BoatStatus
     {
+        static public BoatStatus Read(byte[] buf)
+        {
+            var bs = new BoatStatus();
+            Read(buf, 0, bs);
+            return bs;
+        }
         static public int Read(byte[] buf, int c, BoatStatus b)
         {
             b.BoatId = BitConverter.ToUInt32(buf, c);
