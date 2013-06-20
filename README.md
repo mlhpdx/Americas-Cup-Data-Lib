@@ -6,10 +6,6 @@ This library comes from a love of sailing and the America's Cup organization's  
 
 <p>Usage of the library is extremely simple, perhaps too much so:</p>
 
-```csharp
-var x = new String("hello");
-```
-
 <pre>
 <code language="c#">
     class Program
