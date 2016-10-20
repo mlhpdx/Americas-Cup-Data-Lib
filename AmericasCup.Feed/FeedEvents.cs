@@ -25,7 +25,9 @@ namespace AmericasCup.Feed
                 { MessageTypeEnum.YachtActionCode, (header, body) => { if (OnYachtActionCode != null) OnYachtActionCode(YachtActionCode.Read(body)); } },
                 { MessageTypeEnum.ChatterText, (header, body) => { if (OnChatterText != null) OnChatterText(ChatterText.Read(body)); } },
                 { MessageTypeEnum.BoatLocation, (header, body) => { if (OnBoatLocation != null) OnBoatLocation(BoatLocation.Read(body)); } },
-                { MessageTypeEnum.MarkRounding, (header, body) => { if (OnMarkRounding != null) OnMarkRounding(MarkRounding.Read(body)); } }
+                { MessageTypeEnum.MarkRounding, (header, body) => { if (OnMarkRounding != null) OnMarkRounding(MarkRounding.Read(body)); } },
+                { MessageTypeEnum.CourseWind, (header,body) => { if (OnCourseWind != null) OnCourseWind(CourseWind.Read(body)); } },
+                { MessageTypeEnum.AverageWind, (header,body) => { if (OnAverageWind != null) OnAverageWind(AverageWind.Read(body)); } }
             };
         }
 
@@ -56,6 +58,8 @@ namespace AmericasCup.Feed
         public event Action<ChatterText> OnChatterText;
         public event Action<BoatLocation> OnBoatLocation;
         public event Action<MarkRounding> OnMarkRounding;
+        public event Action<CourseWind> OnCourseWind;
+        public event Action<AverageWind> OnAverageWind;
 
         public event Action<Message> OnUnsupportedMessage;
     }

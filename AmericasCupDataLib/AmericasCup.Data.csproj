@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AverageWind.cs" />
     <Compile Include="BoatLocation.cs" />
     <Compile Include="BoatStatus.cs" />
     <Compile Include="BoatStatusEnum.cs" />
     <Compile Include="ChatterSourceEnum.cs" />
     <Compile Include="ChatterText.cs" />
+    <Compile Include="CourseWind.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="DeviceTypeEnum.cs" />
     <Compile Include="DisplayTextMessage.cs" />
@@ -60,6 +62,8 @@
     <Compile Include="RaceStatusEnum.cs" />
     <Compile Include="RaceTypeEnum.cs" />
     <Compile Include="TextMessage.cs" />
+    <Compile Include="WindRecord.cs" />
+    <Compile Include="WindRecordFlags.cs" />
     <Compile Include="XmlMessage.cs" />
     <Compile Include="XmlMessageSubTypeEnum.cs" />
     <Compile Include="YachtActionCode.cs" />

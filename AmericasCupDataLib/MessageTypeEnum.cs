@@ -16,6 +16,8 @@ namespace AmericasCup.Data
         YachtActionCode = 31,
         ChatterText = 36,
         BoatLocation = 37,
-        MarkRounding = 38
+        MarkRounding = 38,
+        CourseWind = 44,
+        AverageWind = 47
     }
 }

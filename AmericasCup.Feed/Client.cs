@@ -20,7 +20,7 @@ namespace AmericasCup.Feed
         public void Connect(ServerSource server = ServerSource.Test)
         {
             _Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            _Socket.Connect("157.125.69.155", (int)server);
+            _Socket.Connect("livedata.americascup.com", (int)server);
 
             _Stream = new NetworkStream(_Socket, System.IO.FileAccess.Read);
 

@@ -11,8 +11,8 @@ namespace AmericasCup.Data
         Warning = 1,
         Preparatory = 2, 
         Started = 3,
-        Finished = 4,
-        Retired = 5, 
+        Finished = 4, // obsolete
+        Retired = 5,  // obsolete
         Abandoned = 6,
         Postponed = 7,
         Terminated = 8,
