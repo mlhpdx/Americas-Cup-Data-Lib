@@ -28,7 +28,7 @@ namespace AmericasCup.Data
             xm.Length = BitConverter.ToUInt16(buf, c);
             c += 2;
 
-            xm.Text = Encoding.ASCII.GetString(buf, c, xm.Length);
+            xm.Text = Encoding.ASCII.GetString(buf, c, xm.Length).Trim('\0'); // null terminated, sometimes?
             c += xm.Length;
 
             return c;

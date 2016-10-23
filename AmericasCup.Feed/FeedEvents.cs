@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AmericasCup.Data;
+using AmericasCup.Data.Xml;
+using System.Xml.Serialization;
 
 namespace AmericasCup.Feed
 {
@@ -19,7 +21,7 @@ namespace AmericasCup.Feed
                 { MessageTypeEnum.Heartbeat, (header, body) => { if (OnHeartbeat != null) OnHeartbeat(Heartbeat.Read(body)); } },
                 { MessageTypeEnum.RaceStatus, (header, body) => { if (OnRaceStatus != null) OnRaceStatus(RaceStatus.Read(body)); } },
                 { MessageTypeEnum.DisplayTextMessage, (header, body) => { if (OnDisplayTextMessage != null) OnDisplayTextMessage(DisplayTextMessage.Read(body)); } },
-                { MessageTypeEnum.XmlMessage, (header, body) => { if (OnXmlMessage != null) OnXmlMessage(XmlMessage.Read(body)); } },
+                { MessageTypeEnum.XmlMessage, (header, body) => { HandleXmlMessage(XmlMessage.Read(body)); } },
                 { MessageTypeEnum.RaceStartStatus, (header, body) => { if (OnRaceStartStatus != null) OnRaceStartStatus(RaceStartStatus.Read(body)); } },
                 { MessageTypeEnum.YachtEventCode, (header, body) => { if (OnYachtEventCode != null) OnYachtEventCode(YachtEventCode.Read(body)); } },
                 { MessageTypeEnum.YachtActionCode, (header, body) => { if (OnYachtActionCode != null) OnYachtActionCode(YachtActionCode.Read(body)); } },
@@ -48,10 +50,42 @@ namespace AmericasCup.Feed
             }
         }
 
+        void HandleXmlMessage<T>(string text, Action<T> action) where T : class
+        {
+            if (action != null)
+            {
+                var s = new XmlSerializer(typeof(T));
+                var t = s.Deserialize(new System.IO.StringReader(text)) as T;
+                action(t);
+            }
+        }
+
+        void HandleXmlMessage(XmlMessage m)
+        {
+            switch (m.SubType)
+            {
+                case XmlMessageSubTypeEnum.Regatta:
+                    HandleXmlMessage(m.Text, OnRegattaConfig);
+                    break;
+                case XmlMessageSubTypeEnum.Race:
+                    HandleXmlMessage(m.Text, OnRaceConfig);
+                    break;
+                case XmlMessageSubTypeEnum.Boat:
+                    HandleXmlMessage(m.Text, OnBoatConfig);
+                    break;
+                default:
+                    if (OnUnsupportedXmlMessage != null) OnUnsupportedXmlMessage(m);
+                    break;
+            }
+        }
+
+        public event Action<RegattaConfig> OnRegattaConfig;
+        public event Action<RaceConfig> OnRaceConfig;
+        public event Action<BoatConfig> OnBoatConfig;
+
         public event Action<Heartbeat> OnHeartbeat;
         public event Action<RaceStatus> OnRaceStatus;
         public event Action<DisplayTextMessage> OnDisplayTextMessage;
-        public event Action<XmlMessage> OnXmlMessage;
         public event Action<RaceStartStatus> OnRaceStartStatus;
         public event Action<YachtEventCode> OnYachtEventCode;
         public event Action<YachtActionCode> OnYachtActionCode;
@@ -62,5 +96,6 @@ namespace AmericasCup.Feed
         public event Action<AverageWind> OnAverageWind;
 
         public event Action<Message> OnUnsupportedMessage;
+        public event Action<XmlMessage> OnUnsupportedXmlMessage;
     }
 }
