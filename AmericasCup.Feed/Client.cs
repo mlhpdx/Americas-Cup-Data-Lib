@@ -62,11 +62,14 @@ namespace AmericasCup.Feed
                      Debug.Write(string.Format("Header: {0}\nBody: {1}\nCRC: {2}\n", sheader, sbody, scrc));
                  }
 #endif
-                 Task.Factory.StartNew(() =>
-                 {
-                     if (OnMessage != null) OnMessage(header, body, crc);
-                     Task.Factory.StartNew(receive);
-                 });
+                 if (OnMessage != null) OnMessage(header, body, crc);
+                 Task.Factory.StartNew(receive);
+
+                 //Task.Factory.StartNew(() =>
+                 //{
+                 //    if (OnMessage != null) OnMessage(header, body, crc);
+                 //    Task.Factory.StartNew(receive);
+                 //});
              });
 
             Task.Factory.StartNew(receive);
