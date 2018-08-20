@@ -24,6 +24,8 @@ namespace AmericasCup.Data
             c += 4;
             ye.DestinationBoatId = BitConverter.ToUInt32(buf, c);
             c += 4;
+            ye.IncidentId = BitConverter.ToUInt32(buf, c);
+            c += 4;
 
             ye.Event = (YachtEventEnum)buf[c++];
 
@@ -35,6 +37,7 @@ namespace AmericasCup.Data
         public ushort AckNumber;
         public uint RaceId;
         public uint DestinationBoatId;
+        public uint IncidentId;
 
         public YachtEventEnum Event;
     }

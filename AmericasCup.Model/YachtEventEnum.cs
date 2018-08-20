@@ -29,6 +29,27 @@ namespace AmericasCup.Data
         ClearAtStart = 20,
         NotAFinish = 21,
         OcsPenaltyComplete = 22,
-        ZeroPenalties = 100
-    }
+        VmxPenaltyPayoffActive = 23,
+        BoatOnBoatPenaltyPayoff = 24,
+        YachtNotCompeting = 25,
+        YachtCrossedOutsideBoundary = 26,
+        YachtClearedInsideBoundary = 27,
+        IdOffender = 28,
+        UmpOwn = 29,
+        UmpInitiated = 30,
+        PenaltyServed = 31,
+        IdPacer = 32,
+
+        ZeroPenalties = 100,
+        OnePenalties = 101,
+        TwoPenalties = 102,
+        ThreePenalties = 103,
+        FourPenalties = 104,
+        FivePenalties = 105,
+        SixPenalties = 106,
+        SevenPenalties = 107,
+        EightPenalties = 108,
+        NinePenalties = 109,
+        TenPenalties = 110 // ten or more
+   }
 }

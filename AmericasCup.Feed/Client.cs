@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AmericasCup.Feed
 {
-   public enum ServerSource { Test = 4941, Live = 4940 }
+   public enum ServerSource { Test = 4941, Live = 4940, Chatter = 4967 }
    public class Client
    {
       Socket _Socket;

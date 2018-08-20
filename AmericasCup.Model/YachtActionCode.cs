@@ -20,12 +20,12 @@ namespace AmericasCup.Data
                 new byte[] { buf[c++], buf[c++], buf[c++], buf[c++], buf[c++], buf[c++], 0, 0 }, 0));
             ya.AckNumber = BitConverter.ToUInt16(buf, c);
             c += 2;
-            //ya.RaceId = BitConverter.ToUInt32(buf, c);
-            //c += 4;
             ya.OriginatorBoatId = BitConverter.ToUInt32(buf, c);
             c += 4;
+            ya.IncidentId = BitConverter.ToUInt32(buf, c);
+            c += 4;
 
-            ya.Event = (YachtActionEnum)buf[c++];
+         ya.Event = (YachtActionEnum)buf[c++];
 
             return c;
         }
@@ -33,8 +33,8 @@ namespace AmericasCup.Data
         public byte MessageVersionNumber;
         public DateTime Time;
         public ushort AckNumber;
-//        public uint RaceId;
         public uint OriginatorBoatId;
+        public uint IncidentId;
 
         public YachtActionEnum Event;
     }
