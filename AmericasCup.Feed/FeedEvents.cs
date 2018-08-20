@@ -50,7 +50,7 @@ namespace AmericasCup.Feed
          }
       }
 
-`      static Dictionary<Type, XmlSerializer> _serializers = new Dictionary<Type, XmlSerializer>();
+      static Dictionary<Type, XmlSerializer> _serializers = new Dictionary<Type, XmlSerializer>();
       void HandleXmlMessage<T>(string text, Action<T> action) where T : class
       {
          if (action != null)
