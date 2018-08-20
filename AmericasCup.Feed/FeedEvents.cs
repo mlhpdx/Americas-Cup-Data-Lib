@@ -18,18 +18,18 @@ namespace AmericasCup.Feed
       {
          MessageTypeHandlers = new Dictionary<MessageTypeEnum, Action<byte[], byte[]>>()
             {
-                { MessageTypeEnum.Heartbeat, (header, body) => { if (OnHeartbeat != null) OnHeartbeat(Heartbeat.Read(body)); } },
-                { MessageTypeEnum.RaceStatus, (header, body) => { if (OnRaceStatus != null) OnRaceStatus(RaceStatus.Read(body)); } },
-                { MessageTypeEnum.DisplayTextMessage, (header, body) => { if (OnDisplayTextMessage != null) OnDisplayTextMessage(DisplayTextMessage.Read(body)); } },
-                { MessageTypeEnum.XmlMessage, (header, body) => { HandleXmlMessage(XmlMessage.Read(body)); } },
-                { MessageTypeEnum.RaceStartStatus, (header, body) => { if (OnRaceStartStatus != null) OnRaceStartStatus(RaceStartStatus.Read(body)); } },
-                { MessageTypeEnum.YachtEventCode, (header, body) => { if (OnYachtEventCode != null) OnYachtEventCode(YachtEventCode.Read(body)); } },
-                { MessageTypeEnum.YachtActionCode, (header, body) => { if (OnYachtActionCode != null) OnYachtActionCode(YachtActionCode.Read(body)); } },
-                { MessageTypeEnum.ChatterText, (header, body) => { if (OnChatterText != null) OnChatterText(ChatterText.Read(body)); } },
-                { MessageTypeEnum.BoatLocation, (header, body) => { if (OnBoatLocation != null) OnBoatLocation(BoatLocation.Read(body)); } },
-                { MessageTypeEnum.MarkRounding, (header, body) => { if (OnMarkRounding != null) OnMarkRounding(MarkRounding.Read(body)); } },
-                { MessageTypeEnum.CourseWind, (header,body) => { if (OnCourseWind != null) OnCourseWind(CourseWind.Read(body)); } },
-                { MessageTypeEnum.AverageWind, (header,body) => { if (OnAverageWind != null) OnAverageWind(AverageWind.Read(body)); } }
+                { MessageTypeEnum.Heartbeat, (header, body) => OnHeartbeat?.Invoke(Heartbeat.Read(body)) },
+                { MessageTypeEnum.RaceStatus, (header, body) => OnRaceStatus?.Invoke(RaceStatus.Read(body)) },
+                { MessageTypeEnum.DisplayTextMessage, (header, body) => OnDisplayTextMessage?.Invoke(DisplayTextMessage.Read(body)) },
+                { MessageTypeEnum.XmlMessage, (header, body) => HandleXmlMessage(XmlMessage.Read(body)) },
+                { MessageTypeEnum.RaceStartStatus, (header, body) => OnRaceStartStatus?.Invoke(RaceStartStatus.Read(body)) },
+                { MessageTypeEnum.YachtEventCode, (header, body) => OnYachtEventCode?.Invoke(YachtEventCode.Read(body)) },
+                { MessageTypeEnum.YachtActionCode, (header, body) => OnYachtActionCode?.Invoke(YachtActionCode.Read(body)) },
+                { MessageTypeEnum.ChatterText, (header, body) => OnChatterText?.Invoke(ChatterText.Read(body)) },
+                { MessageTypeEnum.BoatLocation, (header, body) => OnBoatLocation?.Invoke(BoatLocation.Read(body)) },
+                { MessageTypeEnum.MarkRounding, (header, body) => OnMarkRounding?.Invoke(MarkRounding.Read(body)) },
+                { MessageTypeEnum.CourseWind, (header,body) => OnCourseWind?.Invoke(CourseWind.Read(body)) },
+                { MessageTypeEnum.AverageWind, (header,body) => OnAverageWind?.Invoke(AverageWind.Read(body)) }
             };
       }
 
