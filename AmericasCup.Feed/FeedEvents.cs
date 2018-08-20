@@ -76,7 +76,7 @@ namespace AmericasCup.Feed
                HandleXmlMessage(m.Text, OnBoatConfig);
                break;
             default:
-               if (OnUnsupportedXmlMessage != null) OnUnsupportedXmlMessage(m);
+               OnUnsupportedXmlMessage?.Invoke(m);
                break;
          }
       }
