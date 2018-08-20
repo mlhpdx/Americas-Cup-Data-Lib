@@ -7,11 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmericasCup.Feed", "America
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAC", "TestAC\TestAC.csproj", "{9FAA87AA-D66D-4F48-8BF4-C9BE38E5700E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8310AA7D-4996-41AD-8D00-0BA762F239B3}"
-	ProjectSection(SolutionItems) = preProject
-		README = README
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmericasCup.Model", "AmericasCup.Model\AmericasCup.Model.csproj", "{597C8EC9-AD60-47F2-9670-CEE49F1993FE}"
 EndProject
 Global
