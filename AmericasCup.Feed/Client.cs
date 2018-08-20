@@ -45,7 +45,7 @@ namespace AmericasCup.Feed
              fillbuffer(crc);
 
 #if DEBUG
-                if (header[0] != 0x47 || header[1] != 0x83)
+             if (header[0] != 0x47 || header[1] != 0x83)
                 Debug.WriteLine("Invalid message header");
 
              uint cm = BitConverter.ToUInt32(crc, 0);
@@ -60,7 +60,7 @@ namespace AmericasCup.Feed
                 Debug.Write(string.Format("Header: {0}\nBody: {1}\nCRC: {2}\n", sheader, sbody, scrc));
              }
 #endif
-                OnMessage?.Invoke(header, body, crc);
+             OnMessage?.Invoke(header, body, crc);
              Task.Factory.StartNew(receive);
           });
 
