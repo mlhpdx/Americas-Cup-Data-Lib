@@ -24,14 +24,14 @@ namespace AmericasCup.Feed
 
             _Stream = new NetworkStream(_Socket, System.IO.FileAccess.Read);
 
-            Action<byte[]> fillbuffer = b =>
+            void fillbuffer(byte[] b)
             {
-                int total = 0, read = 0;
-                while ((read = _Stream.Read(b, total, b.Length - total)) > 0)
-                {
-                    total += read;
-                }
-            };
+               int total = 0, read = 0;
+               while ((read = _Stream.Read(b, total, b.Length - total)) > 0)
+               {
+                  total += read;
+               }
+            }
 
             Action receive = null;
             receive = new Action(() =>
@@ -62,14 +62,8 @@ namespace AmericasCup.Feed
                      Debug.Write(string.Format("Header: {0}\nBody: {1}\nCRC: {2}\n", sheader, sbody, scrc));
                  }
 #endif
-                 if (OnMessage != null) OnMessage(header, body, crc);
-                 Task.Factory.StartNew(receive);
-
-                 //Task.Factory.StartNew(() =>
-                 //{
-                 //    if (OnMessage != null) OnMessage(header, body, crc);
-                 //    Task.Factory.StartNew(receive);
-                 //});
+                OnMessage?.Invoke(header, body, crc);
+                Task.Factory.StartNew(receive);
              });
 
             Task.Factory.StartNew(receive);
