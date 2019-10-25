@@ -51,10 +51,10 @@ namespace TestAC
                     Console.WriteLine(sb.ToString());
                 }
             };
-            e.OnAverageWind += w => Console.WriteLine("Average wind is {0.00}m/s over past {0}s, {0.00}m/s over past {0}s, {0.00}m/s over past {0}s, {0.00}m/s over past {0}s",
+            e.OnAverageWind += w => Console.WriteLine("Average wind is {0:0.00}m/s over past {1:0}s, {2:0.00}m/s over past {3:0}s, {4:0.00}m/s over past {5:0}s, {6:0.00}m/s over past {7:0}s",
                 w.RawSpeed, w.RawPeriod, w.Speed2, w.Period2, w.Speed3, w.Period3, w.Speed4, w.Period4);
             e.OnUnsupportedXmlMessage += xm => {
-                Console.WriteLine(string.Format("XML {0} message:\n", xm.SubType, xm.Text));
+                Console.WriteLine(string.Format("XML {0} message: {1}\n", xm.SubType, xm.Text));
             };
             e.OnUnsupportedMessage += um => Console.WriteLine(string.Format("Unsupported message {0} ({1} bytes) at {2}", um.Header.Type, um.Header.MessageLength, um.Header.TimeStamp));
 
